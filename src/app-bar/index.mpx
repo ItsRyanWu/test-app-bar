@@ -1,0 +1,168 @@
+
+
+<template>
+  <!-- mpx_config_safelist: 'ml-3 -translate-y-100%' -->
+  <!-- <transition
+    class=""
+    isShown="{{!isHidden}}"
+    delay="{{[0, 0]}}"
+    duration="{{[300, 500]}}"
+    enter="{{['move-from-down', {property: 'translateY', from: 100, to: 0, easing: 'ease-out-quint'}]}}"
+    leave="{{['move-down', {property: 'translateY', from: 0, to: 100, easing: 'ease-out-quint'}]}}"
+    basedOnPercentage
+    skip="{{skipAnimation}}"
+  > -->
+  <view
+    class="tabbar w-full flex justify-between z-10 w-screen absolute bottom-0 left-0 px-5 bg-white pointer-events-auto b-t-#F2F2F2 b-t-1 b-t-solid"
+    style="padding-top:{{tabbarStyle.paddingTop}}px;padding-bottom:{{tabbarStyle.paddingBottom}}px;"
+  >
+    <view
+      wx:for="{{items}}"
+      wx:key="name"
+      class="tabbar-item flex flex-col justify-center items-center flex-auto p-2.5"
+      wx:class="{{{
+        'ml-3': index !== 0
+      }}}"
+      data-path="{{item.path}}"
+      bind:tap="switch(item)"
+    >
+      <dc-icon class="w-6 h-6" type="{{item.icon}}"></dc-icon>
+      <view class="mt-1 text-11px">{{ item.name }}</view>
+    </view>
+  </view>
+  <!-- </transition> -->
+</template>
+
+<script lang="ts">
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    data: {
+      activePath: '/pages/index',
+      items: [
+        {
+          name: '分数',
+          icon: 'chart',
+          path: '/pages/index'
+        },
+        {
+          name: '任务',
+          icon: 'badge',
+          path: '/pages/index',
+          count: true
+        },
+        {
+          name: '报告',
+          icon: 'report',
+          path: '/pages/index'
+        }
+      ],
+      isHidden: true,
+      skipAnimation: [false, false]
+    },
+    lifetimes: {
+      attached() {
+        // app.log('Tab bar mounted')
+        // const path = getCurrentPagePath() as Route
+        // this.setVisible(path)
+        // this.calcHeight()
+        // // This event behave differently on iOS and Android when call 'didPop' method from cutsom route context
+        // // It doesn't respond instantly on iOS
+        // @ts-ignore
+        wx.onAppRoute((e) => {
+          const currentPage = e.path
+          this.setVisible(currentPage)
+        })
+      }
+    },
+    computed: {
+      tabbarStyle() {
+        const originalPadding = 8
+        const reduced = 30
+        const padding = Math.max(originalPadding, reduced)
+        return {
+          paddingTop: originalPadding,
+          paddingBottom: padding
+        }
+      }
+    },
+    methods: {
+      setVisible(currentPath: string) {
+        this.activePath = '/' + currentPath
+      }
+      // switch(item: Item) {
+      //   if (this.activePath === item.path) return
+      //   app.vibrate()
+      //   this.activePath = item.path
+      //   wx.switchTab({
+      //     url: item.path,
+      //     routeType: CustomRouteType.Tab,
+      //     fail: (e) => {
+      //       console.log(e)
+      //     }
+      //   })
+      // },
+      // calcHeight() {
+      //   const query = this.createSelectorQuery()
+      //   query.select('.tabbar').boundingClientRect()
+      //   app.log('Tab bar caculate layout')
+      //   const timer = setTimeout(() => {
+      //     this.handleTabbarRenderFailure()
+      //   }, 1000)
+      //   query.exec((res) => {
+      //     clearTimeout(timer)
+      //     const currentPage = getCurrentPagePath() as Route
+      //     const isTabPage = tabRoutes.some((route) => isSameRoute(route, currentPage))
+      //     app.log(`Tab bar caculate layout: isTabPage ${isTabPage}`)
+      //     const { height, bottom, left, right, top, width } = res[0]
+      //     const dimension = { height, bottom, left, right, top, width }
+      //     app.log(`Tab bar caculate layout: ${JSON.stringify(dimension)}`)
+      //     tabbarHeight.value = height
+      //     // Suspect sometimes the component wouldn't render
+      //     if (!height) {
+      //       this.handleTabbarRenderFailure()
+      //     }
+      //   })
+      // },
+      // show() {
+      //   this.isHidden = false
+      // },
+      // hide() {
+      //   this.isHidden = true
+      // },
+      // handleTabbarRenderFailure() {
+      //   app.catchError('Tabbar render failed')
+      //   wx.reportEvent(WeDataEvent.TabbarRenderError)
+      //   wx.showModal({
+      //     title: '出现了一点问题',
+      //     content: '请尝试刷新页面解决',
+      //     confirmText: '刷新页面',
+      //     cancelText: '继续浏览',
+      //     success(res) {
+      //       if (res.confirm) {
+      //         app.vibrate()
+      //         const currentPath = getCurrentPagePath()
+      //         const enterOption = wx.getEnterOptionsSync()
+      //         const query = objectToQueryString(enterOption.query)
+      //         app.log(`Relaunch MP on page:`, '/' + currentPath + query)
+      //         wx.reLaunch({ url: '/' + currentPath + query })
+      //       }
+      //     }
+      //   })
+      // }
+    }
+  })
+</script>
+
+<style lang="scss">
+</style>
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "apply-shared",
+    "usingComponents": {
+      "dc-icon": "../components/icon"
+    }
+  }
+</script>

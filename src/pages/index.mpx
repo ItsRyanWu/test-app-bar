@@ -1,21 +1,21 @@
 <template>
-  <list></list>
+  <view class="w-screen h-screen flex justify-center items-center text-30px font-bold">
+    TEST TABBAR
+  </view>
 </template>
 
 <script lang="ts">
-import { createPage } from '@mpxjs/core'
+  import { createPage } from '@mpxjs/core'
 
-createPage({
-  onLoad() {
-    //
-  }
-})
+  createPage({
+    onLoad() {
+      //
+    }
+  })
 </script>
 
 <script type="application/json">
   {
-    "usingComponents": {
-      "list": "../components/list"
-    }
+    "usingComponents": {}
   }
 </script>

@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index",
+    "pages/report-list",
+    "pages/badge-list"
+  ],
+  "appBar": {
+    "custom": true
+  },
+  "style": "v2",
+  "window": {
+    "navigationBarTitleText": "EF",
+    "navigationStyle": "custom",
+    "backgroundColor": "#000000"
+  },
+  "renderer": "skyline",
+  "lazyCodeLoading": "requiredComponents",
+  "componentFramework": "glass-easel",
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "defaultContentBox": false,
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.1",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/index",
+        "text": "分数"
+      },
+      {
+        "pagePath": "pages/report-list",
+        "text": "成就"
+      },
+      {
+        "pagePath": "pages/badge-list",
+        "text": "报告"
+      }
+    ]
+  }
+}

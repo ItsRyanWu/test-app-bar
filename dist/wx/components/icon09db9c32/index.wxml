@@ -1,0 +1,1 @@
+<view hover-class='{{("_u_"+(hoverStyle))}}' hover-stay-time="200" hover-start-time="0" hidden="{{hidden}}" class="icon class {{color ? 'overflow-hidden' : ''}} {{isDisabled ? '-disabled' : ''}}" style="{{style}}"><view class="icon__inner icon-{{type}} fill-{{fillMode}} {{color ? 'colorable' : 'non-colorable'}}" style="{{dynamicStyle}}"/></view>

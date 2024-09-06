@@ -1,0 +1,19 @@
+<template>
+  <view class="w-screen h-screen flex justify-center items-center text-100px font-bold"> 2 </view>
+</template>
+
+<script lang="ts">
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    onLoad() {
+      //
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {}
+  }
+</script>

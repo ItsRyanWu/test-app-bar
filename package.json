@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "mpx-cli-service serve",
     "build": "mpx-cli-service build",
-    "lint": "eslint --ext .js,.ts,.mpx src/"
+    "lint": "eslint --ext .js,.ts,.mpx src/",
+    "open": "/Applications/wechatwebdevtools.app/contents/MacOS/cli open --project $(pwd)"
   },
   "dependencies": {
     "@mpxjs/api-proxy": "^2.9.0",
@@ -41,6 +42,8 @@
     "autoprefixer": "^10.2.4",
     "eslint": "^7.0.0",
     "postcss": "^8.2.6",
+    "sass": "^1.78.0",
+    "sass-loader": "^16.0.1",
     "stylus": "^0.55.0",
     "stylus-loader": "^6.1.0",
     "typescript": "^4.1.3",

@@ -1,0 +1,4 @@
+@import "../../styles/uno.wxss";
+.list {
+  background-color: #f00;
+}

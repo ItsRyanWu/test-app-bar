@@ -1,0 +1,32 @@
+{
+  "setting": {
+    "newFeature": true,
+    "urlCheck": true,
+    "es6": true,
+    "postcss": true,
+    "minified": false,
+    "checkSiteMap": false,
+    "autoAudits": false,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "compileWorklet": true,
+    "enhance": true
+  },
+  "appid": "wx2b979efbb5da7b59",
+  "projectname": "test-app-bar",
+  "description": "A mpx project",
+  "condition": {},
+  "compileType": "miniprogram",
+  "libVersion": "3.5.6",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "styleIsolation": "apply-shared",
+  "usingComponents": {
+    "dc-icon": "/components/icon09db9c32/index"
+  },
+  "component": true
+}

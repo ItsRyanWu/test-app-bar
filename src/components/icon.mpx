@@ -1,0 +1,115 @@
+<template>
+  <view
+    class="icon class {{color ? 'overflow-hidden' : ''}} {{isDisabled ? '-disabled' : ''}}"
+    style="{{style}}"
+    hover-class="-{{hoverStyle}}"
+    hover-stay-time="200"
+    hover-start-time="0"
+    hidden="{{hidden}}"
+  >
+    <view
+      class="icon__inner icon-{{type}} fill-{{fillMode}} {{color ? 'colorable' : 'non-colorable'}}"
+      style="{{dynamicStyle}}"
+    />
+  </view>
+</template>
+
+<script lang="ts">
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    options: {
+      virtualHost: true
+    },
+    externalClasses: ['class'],
+    properties: {
+      type: {
+        type: String
+      },
+      style: String,
+      height: {
+        type: Number,
+        optionalTypes: [String]
+      },
+      width: {
+        type: Number,
+        optionalTypes: [String]
+      },
+      hidden: {
+        type: Boolean,
+        value: false
+      },
+      hoverStyle: String,
+      isDisabled: {
+        type: Boolean,
+        value: false
+      },
+      color: {
+        type: String,
+        value: ''
+      },
+      fillMode: {
+        type: String,
+        value: 'contain'
+      }
+    },
+    computed: {
+      dynamicStyle() {
+        const height = this.height ? `height:${Number(this.height) * 2}rpx;` : ''
+        const width = this.width ? `width:${Number(this.width) * 2}rpx;` : ''
+        const backgroundColor = this.color ? `background-color:${this.color};` : ''
+
+        return height + width + backgroundColor
+      }
+    }
+  })
+</script>
+
+<style lang="scss">
+  $icons: (
+    home: url('../assets/icons/home.svg'),
+    chart: url('../assets/icons/chart.svg'),
+    badge: url('../assets/icons/badge.svg'),
+    report: url('../assets/icons/report.svg')
+  );
+
+  .icon__inner {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    &.fill-contain {
+      background-size: contain;
+    }
+
+    &.fill-cover {
+      background-size: cover;
+    }
+
+    @each $name, $value in $icons {
+      #{"--"}#{$name}: $value;
+
+      #{'&.icon-'}#{$name} {
+        &.non-colorable {
+          background-image: var(#{'--'}#{$name});
+        }
+
+        &.colorable {
+          transform: scale(1.1);
+          transform-origin: 50% 50%;
+          mask-image: var(#{'--'}#{$name});
+          transition: background-color 0.3s;
+        }
+      }
+    }
+  }
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "apply-shared"
+  }
+</script>
+
