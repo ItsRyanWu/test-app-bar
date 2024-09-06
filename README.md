@@ -1,13 +1,13 @@
 # test-app-bar
 
-## Project setup
+## 复现步骤
 
-```javascript
-// development
-npm run serve // 小程序本地开发构建
-
-
-// production
-npm run build // 小程序生产环境构建
+1.
 
 ```
+yarn install
+yarn serve
+
+```
+
+2. 打开小程序开发工具，导入项目文件夹 ./dist/wx
